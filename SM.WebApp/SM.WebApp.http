@@ -1,0 +1,6 @@
+@SM.WebApp_HostAddress = http://localhost:5278
+
+GET {{SM.WebApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
