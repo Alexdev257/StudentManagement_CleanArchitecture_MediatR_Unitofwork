@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SM.Application.Interface.IRepo;
+using SM.Application.Interface;
 using SM.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -13,36 +13,35 @@ namespace SM.Infrastructure.Implements
     {
 
         protected readonly ApplicationDbContext _context;
-        protected DbSet<T> _dbSet;
 
         public GRepo(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<T>();
         }
         public void Add(T entity)
         {
-            _dbSet.Add(entity);
+            //_dbSet.Add(entity);
+            _context.Set<T>().Add(entity);
         }
 
         public virtual async Task<T?> GetByIdAsync(Guid id)
         {
-            return await _dbSet.FindAsync(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public virtual async Task<IEnumerable<T>> ListAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public void Remove(T entity)
         {
-            _dbSet.Remove(entity);
+            _context.Set<T>().Remove(entity);
         }
 
         public void Update(T entity)
         {
-            _dbSet.Update(entity);
+            _context.Set<T>().Update(entity);
         }
     }
 }

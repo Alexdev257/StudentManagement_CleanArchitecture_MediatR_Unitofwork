@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SM.Application.Interface.IRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +7,18 @@ using System.Threading.Tasks;
 using SM.Domain.Entities;
 using SM.Application.CQRS.Command;
 using SM.Application.DTOs;
+using SM.Application.Interface;
 
 namespace SM.Application.CQRS.Hanlders
 {
-    public class CreateStudentHandler : IRequestHandler<CreateStudentCommand, StudentDto>
+    public class CreateStudentHandler : IRequestHandler<CreateStudentCommand, Unit>
     {
         private readonly IUnitOfWork _unitOfWork;
         public CreateStudentHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<StudentDto> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
             var student = new Student
             {
@@ -28,7 +28,8 @@ namespace SM.Application.CQRS.Hanlders
             };
             _unitOfWork.Students.Add(student);
             await _unitOfWork.CompleteAsync();
-            return new StudentDto(student.Id, student.FullName, student.Email, student.DateOfBirth);
+            //return new StudentDto(student.Id, student.FullName, student.Email, student.DateOfBirth);
+            return Unit.Value;
         }
     }
 }

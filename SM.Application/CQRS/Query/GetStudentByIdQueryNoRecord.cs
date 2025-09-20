@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM.Application.CQRS.Command
+namespace SM.Application.CQRS.Query
 {
-    public record CreateStudentCommand(string FullName, string Email, DateTime DateOfBirth)
-    : IRequest;
+    public class GetStudentByIdQueryNoRecord : IRequest<StudentRes>
+    {
+        public Guid Id { get; set; }
+    }
 }

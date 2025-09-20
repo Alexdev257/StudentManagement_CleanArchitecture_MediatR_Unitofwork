@@ -2,7 +2,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SM.Application.CQRS.Command;
 using SM.Application.CQRS.Hanlders;
-using SM.Application.Interface.IRepo;
+using SM.Application.Interface;
 using SM.Infrastructure.Data;
 using SM.Infrastructure.DependencyInjection;
 using SM.Infrastructure.Implements;

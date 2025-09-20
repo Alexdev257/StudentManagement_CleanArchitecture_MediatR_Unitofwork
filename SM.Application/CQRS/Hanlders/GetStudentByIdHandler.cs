@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SM.Application.CQRS.Query;
 using SM.Application.DTOs;
-using SM.Application.Interface.IRepo;
+using SM.Application.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

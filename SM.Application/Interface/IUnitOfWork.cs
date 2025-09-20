@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM.Application.Interface.IRepo
+namespace SM.Application.Interface
 {
     public interface IUnitOfWork
     {
         IGenericRepo<Student> Students { get; }
         IGenericRepo<Course> Courses { get; }
-        Task<int> CompleteAsync(); // commit
+        Task<bool> CompleteAsync(); // commit
     }
 }

@@ -1,4 +1,4 @@
-﻿using SM.Application.Interface.IRepo;
+﻿using SM.Application.Interface;
 using SM.Domain.Entities;
 using SM.Infrastructure.Data;
 using System;
@@ -19,11 +19,11 @@ namespace SM.Infrastructure.Implements
             Courses = new GRepo<Course>(_context);
         }
 
-        public IGenericRepo<Student> Students { get;  }
+        public IGenericRepo<Student> Students { get; }
         public IGenericRepo<Course> Courses { get; }
-        public async Task<int> CompleteAsync()
+        public async Task<bool> CompleteAsync()
         {
-            return await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Dispose()

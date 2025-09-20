@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM.Application.Interface.IRepo
+namespace SM.Application.Interface
 {
     public interface IGenericRepo<T> where T : class
     {
